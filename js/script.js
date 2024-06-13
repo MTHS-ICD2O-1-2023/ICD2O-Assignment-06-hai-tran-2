@@ -15,11 +15,10 @@ async function showCountry() {
   try {
     const resultJSON = await fetch("https://apiv3.iucnredlist.org/api/v3/country/list?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee")
     const jsonData = await resultJSON.json()
-    const numberOfCountry = jsonData["count"]
-    const randomNumber = Math.floor(Math.random() * numberOfCountry) + 1  // returns a random integer from 1 to 6 into variable "randomNumber" 
-    const randomCountry = jsonData["results"][randomNumber]
-    console.log(randomCountry)
-    document.getElementById("result").innerHTML = "The random country is " + randomCountry
+    const randomNumber = Math.floor(Math.random() * 251) + 1
+    const countryName = jsonData["results"][randomNumber]["country"]
+    const countryIsocode = jsonData["results"][randomNumber]["isocode"]
+    document.getElementById("result").innerHTML = "The random country is " + countryName + " and its ISO code is " + countryIsocode
   } catch (error) {
     console.error(error)
   }

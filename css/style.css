@@ -26,5 +26,6 @@ p {
 }
 
 img {
-  height: 200px;
+  float: right;
+  width: 300px;
 }
